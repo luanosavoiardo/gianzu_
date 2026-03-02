@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina di Test - Il mio sito funziona!</title>
+    <title>Pagina di Test - GitHub Pages</title>
     <style>
+        /* Stili identici a prima, ma aggiungo un badge GitHub */
+        .github-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #24292e;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .github-badge:hover {
+            background: #2f363d;
+        }
+        
+        /* Il resto degli stili rimane identico al codice precedente */
         * {
             margin: 0;
             padding: 0;
@@ -29,11 +49,22 @@
             width: 100%;
             padding: 40px;
             text-align: center;
+            position: relative;
         }
         
         h1 {
             color: #333;
             font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .github-pages-badge {
+            background: #24292e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9em;
             margin-bottom: 20px;
         }
         
@@ -154,21 +185,44 @@
     </style>
 </head>
 <body>
+    <a href="https://github.com/TUO-UTENTE/il-mio-sito-test" target="_blank" class="github-badge">
+        📂 Visualizza su GitHub
+    </a>
+    
     <div class="container">
+        <div class="github-pages-badge">
+            🚀 Hosting su GitHub Pages
+        </div>
+        
         <div class="success-icon">✓</div>
-        <h1>🎉 Il tuo sito funziona! 🎉</h1>
+        <h1>🎉 GitHub Pages funziona! 🎉</h1>
         
         <div class="status-badge">
-            STATUS: ATTIVO
+            STATUS: ATTIVO SU GITHUB PAGES
         </div>
         
         <div class="test-message">
-            <strong>✅ Pagina di test caricata con successo!</strong><br>
-            Questa pagina conferma che il tuo server web è operativo.
+            <strong>✅ Pagina ospitata su GitHub Pages caricata con successo!</strong><br>
+            Questa pagina conferma che il tuo sito su GitHub Pages è operativo.
         </div>
         
         <div class="info-box">
-            <h2 style="margin-bottom: 20px; color: #333;">📊 Informazioni di sistema</h2>
+            <h2 style="margin-bottom: 20px; color: #333;">📊 Informazioni GitHub Pages</h2>
+            
+            <div class="info-item">
+                <span class="label">URL Sito:</span>
+                <span class="value" id="site-url"></span>
+            </div>
+            
+            <div class="info-item">
+                <span class="label">Repository:</span>
+                <span class="value" id="repo-name">Caricamento...</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="label">Branch:</span>
+                <span class="value">main (o master)</span>
+            </div>
             
             <div class="info-item">
                 <span class="label">Data/Ora:</span>
@@ -184,57 +238,47 @@
                 <span class="label">Sistema:</span>
                 <span class="value" id="os-info"></span>
             </div>
-            
-            <div class="info-item">
-                <span class="label">Lingua:</span>
-                <span class="value" id="language-info"></span>
-            </div>
-            
-            <div class="info-item">
-                <span class="label">Risoluzione:</span>
-                <span class="value" id="resolution-info"></span>
-            </div>
         </div>
         
         <div class="server-info">
             <div class="server-card">
-                <h3>🌐 Server Web</h3>
-                <p id="server-software">Apache/nginx</p>
+                <h3>🌐 Piattaforma</h3>
+                <p>GitHub Pages</p>
             </div>
             
             <div class="server-card">
-                <h3>📡 Indirizzo IP</h3>
-                <p id="ip-address">Caricamento...</p>
+                <h3>📡 CDN</h3>
+                <p>Fastly</p>
             </div>
             
             <div class="server-card">
-                <h3>🔌 Protocollo</h3>
-                <p id="protocol">HTTP/HTTPS</p>
+                <h3>🔒 HTTPS</h3>
+                <p id="https-status">Attivo</p>
             </div>
         </div>
         
         <div class="customization-note">
-            <strong>✏️ Area personalizzazione:</strong><br>
-            Questa pagina è stata creata per te! Puoi modificare colori, testi e stili in base alle tue preferenze.
-            Il file si chiama "index.html" (o il nome che preferisci).
+            <strong>✏️ Personalizza questa pagina:</strong><br>
+            1. Modifica il file index.html sul tuo repository GitHub<br>
+            2. Dopo il commit, la pagina si aggiorna automaticamente<br>
+            3. Sostituisci "TUO-UTENTE" con il tuo username GitHub
         </div>
         
         <div style="margin: 20px 0;">
-            <h3 style="color: #333; margin-bottom: 10px;">🔍 Test rapidi:</h3>
-            <button onclick="testConnection()" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Test Connessione</button>
-            <button onclick="showServerInfo()" style="background: #764ba2; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Info Server</button>
-            <button onclick="reloadPage()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Ricarica Pagina</button>
+            <h3 style="color: #333; margin-bottom: 10px;">🔍 Test GitHub Pages:</h3>
+            <button onclick="testGitHubPages()" style="background: #24292e; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Test GitHub Pages</button>
+            <button onclick="showInfo()" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Info Pagina</button>
+            <button onclick="window.location.reload()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Ricarica</button>
         </div>
         
         <div class="footer">
-            <p>🚀 Pagina di test - Puoi personalizzarla liberamente</p>
-            <p style="margin-top: 10px;">📧 Per assistenza: <a href="mailto:tuo@email.com" style="color: #667eea; text-decoration: none;">tuo@email.com</a></p>
-            <p style="margin-top: 10px; font-size: 0.8em;">Versione 1.0 - Pagina di test per verifica sito web</p>
+            <p>🚀 Pagina di test per GitHub Pages</p>
+            <p style="margin-top: 10px;">📝 Modifica questo file per personalizzare il tuo sito</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">Versione 1.0 - Test GitHub Pages</p>
         </div>
     </div>
 
     <script>
-        // Funzione per aggiornare data e ora
         function updateDateTime() {
             const now = new Date();
             const options = { 
@@ -250,90 +294,59 @@
             document.getElementById('current-datetime').textContent = now.toLocaleDateString('it-IT', options);
         }
         
-        // Raccogli informazioni sul browser
         function getBrowserInfo() {
             const ua = navigator.userAgent;
-            let browser = "Sconosciuto";
-            
-            if (ua.indexOf("Chrome") > -1) browser = "Google Chrome";
-            else if (ua.indexOf("Firefox") > -1) browser = "Mozilla Firefox";
-            else if (ua.indexOf("Safari") > -1) browser = "Apple Safari";
-            else if (ua.indexOf("Edge") > -1) browser = "Microsoft Edge";
-            else if (ua.indexOf("MSIE") > -1 || ua.indexOf("Trident") > -1) browser = "Internet Explorer";
-            
-            return browser;
+            if (ua.indexOf("Chrome") > -1) return "Google Chrome";
+            if (ua.indexOf("Firefox") > -1) return "Mozilla Firefox";
+            if (ua.indexOf("Safari") > -1) return "Apple Safari";
+            if (ua.indexOf("Edge") > -1) return "Microsoft Edge";
+            return "Altro browser";
         }
         
-        // Raccogli informazioni sul sistema operativo
         function getOSInfo() {
             const ua = navigator.userAgent;
-            let os = "Sconosciuto";
-            
-            if (ua.indexOf("Windows") > -1) os = "Windows";
-            else if (ua.indexOf("Mac") > -1) os = "macOS";
-            else if (ua.indexOf("Linux") > -1) os = "Linux";
-            else if (ua.indexOf("Android") > -1) os = "Android";
-            else if (ua.indexOf("iOS") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1) os = "iOS";
-            
-            return os;
+            if (ua.indexOf("Windows") > -1) return "Windows";
+            if (ua.indexOf("Mac") > -1) return "macOS";
+            if (ua.indexOf("Linux") > -1) return "Linux";
+            if (ua.indexOf("Android") > -1) return "Android";
+            if (ua.indexOf("iOS") > -1 || ua.indexOf("iPhone") > -1) return "iOS";
+            return "Sistema sconosciuto";
         }
         
-        // Ottieni l'indirizzo IP (tramite API esterna)
-        function getIPAddress() {
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('ip-address').textContent = data.ip;
-                })
-                .catch(() => {
-                    document.getElementById('ip-address').textContent = 'Non disponibile';
-                });
+        function testGitHubPages() {
+            alert('✅ GitHub Pages funziona correttamente! Questa pagina è stata caricata con successo.');
         }
         
-        // Test connessione
-        function testConnection() {
-            alert('✅ Connessione attiva! La pagina risponde correttamente.');
-        }
-        
-        // Mostra info server
-        function showServerInfo() {
-            const serverInfo = `
-                📊 INFORMAZIONI SERVER:
+        function showInfo() {
+            const info = `
+                📊 INFORMAZIONI GITHUB PAGES:
                 
                 URL: ${window.location.href}
-                Hostname: ${window.location.hostname}
-                Porta: ${window.location.port || '80/443'}
+                Host: github.io
                 Protocollo: ${window.location.protocol}
-                Path: ${window.location.pathname}
                 
-                Questa pagina è stata caricata con successo!
+                ✅ La pagina è hostata correttamente su GitHub Pages!
             `;
-            alert(serverInfo);
+            alert(info);
         }
         
-        // Ricarica pagina
-        function reloadPage() {
-            location.reload();
-        }
-        
-        // Inizializzazione
         document.addEventListener('DOMContentLoaded', function() {
             updateDateTime();
             setInterval(updateDateTime, 1000);
             
+            document.getElementById('site-url').textContent = window.location.href;
             document.getElementById('browser-info').textContent = getBrowserInfo();
             document.getElementById('os-info').textContent = getOSInfo();
-            document.getElementById('language-info').textContent = navigator.language || 'it-IT';
-            document.getElementById('resolution-info').textContent = `${window.screen.width}x${window.screen.height}`;
-            document.getElementById('protocol').textContent = window.location.protocol.toUpperCase();
             
-            // Rileva software server (tentativo)
-            const serverSoftware = navigator.userAgent.includes('Apache') ? 'Apache' : 
-                                 navigator.userAgent.includes('nginx') ? 'nginx' : 
-                                 'Server web standard';
-            document.getElementById('server-software').textContent = serverSoftware;
+            // Estrai nome repository dall'URL
+            const pathParts = window.location.pathname.split('/');
+            if (pathParts.length > 1) {
+                document.getElementById('repo-name').textContent = pathParts[1] || 'root';
+            }
             
-            getIPAddress();
+            // Verifica HTTPS
+            document.getElementById('https-status').textContent = 
+                window.location.protocol === 'https:' ? '✅ Attivo' : '⚠️ Non HTTPS';
         });
     </script>
 </body>
