@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di Test - Il mio sito funziona!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .status-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .info-box {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .info-item {
+            margin: 15px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #667eea;
+            display: inline-block;
+            width: 120px;
+        }
+        
+        .value {
+            color: #333;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        
+        .test-message {
+            background: #e8f5e8;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #2e7d32;
+        }
+        
+        .customization-note {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            color: #f57c00;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9em;
+        }
+        
+        .server-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .server-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .server-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .server-card p {
+            font-size: 0.9em;
+            color: #666;
+            word-break: break-all;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .label {
+                display: block;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>🎉 Il tuo sito funziona! 🎉</h1>
+        
+        <div class="status-badge">
+            STATUS: ATTIVO
+        </div>
+        
+        <div class="test-message">
+            <strong>✅ Pagina di test caricata con successo!</strong><br>
+            Questa pagina conferma che il tuo server web è operativo.
+        </div>
+        
+        <div class="info-box">
+            <h2 style="margin-bottom: 20px; color: #333;">📊 Informazioni di sistema</h2>
+            
+            <div class="info-item">
+                <span class="label">Data/Ora:</span>
+                <span class="value" id="current-datetime"></span>
+            </div>
+            
+            <div class="info-item">
+                <span class="label">Browser:</span>
+                <span class="value" id="browser-info"></span>
+            </div>
+            
+            <div class="info-item">
+                <span class="label">Sistema:</span>
+                <span class="value" id="os-info"></span>
+            </div>
+            
+            <div class="info-item">
+                <span class="label">Lingua:</span>
+                <span class="value" id="language-info"></span>
+            </div>
+            
+            <div class="info-item">
+                <span class="label">Risoluzione:</span>
+                <span class="value" id="resolution-info"></span>
+            </div>
+        </div>
+        
+        <div class="server-info">
+            <div class="server-card">
+                <h3>🌐 Server Web</h3>
+                <p id="server-software">Apache/nginx</p>
+            </div>
+            
+            <div class="server-card">
+                <h3>📡 Indirizzo IP</h3>
+                <p id="ip-address">Caricamento...</p>
+            </div>
+            
+            <div class="server-card">
+                <h3>🔌 Protocollo</h3>
+                <p id="protocol">HTTP/HTTPS</p>
+            </div>
+        </div>
+        
+        <div class="customization-note">
+            <strong>✏️ Area personalizzazione:</strong><br>
+            Questa pagina è stata creata per te! Puoi modificare colori, testi e stili in base alle tue preferenze.
+            Il file si chiama "index.html" (o il nome che preferisci).
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <h3 style="color: #333; margin-bottom: 10px;">🔍 Test rapidi:</h3>
+            <button onclick="testConnection()" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Test Connessione</button>
+            <button onclick="showServerInfo()" style="background: #764ba2; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Info Server</button>
+            <button onclick="reloadPage()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">Ricarica Pagina</button>
+        </div>
+        
+        <div class="footer">
+            <p>🚀 Pagina di test - Puoi personalizzarla liberamente</p>
+            <p style="margin-top: 10px;">📧 Per assistenza: <a href="mailto:tuo@email.com" style="color: #667eea; text-decoration: none;">tuo@email.com</a></p>
+            <p style="margin-top: 10px; font-size: 0.8em;">Versione 1.0 - Pagina di test per verifica sito web</p>
+        </div>
+    </div>
+
+    <script>
+        // Funzione per aggiornare data e ora
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZoneName: 'short'
+            };
+            document.getElementById('current-datetime').textContent = now.toLocaleDateString('it-IT', options);
+        }
+        
+        // Raccogli informazioni sul browser
+        function getBrowserInfo() {
+            const ua = navigator.userAgent;
+            let browser = "Sconosciuto";
+            
+            if (ua.indexOf("Chrome") > -1) browser = "Google Chrome";
+            else if (ua.indexOf("Firefox") > -1) browser = "Mozilla Firefox";
+            else if (ua.indexOf("Safari") > -1) browser = "Apple Safari";
+            else if (ua.indexOf("Edge") > -1) browser = "Microsoft Edge";
+            else if (ua.indexOf("MSIE") > -1 || ua.indexOf("Trident") > -1) browser = "Internet Explorer";
+            
+            return browser;
+        }
+        
+        // Raccogli informazioni sul sistema operativo
+        function getOSInfo() {
+            const ua = navigator.userAgent;
+            let os = "Sconosciuto";
+            
+            if (ua.indexOf("Windows") > -1) os = "Windows";
+            else if (ua.indexOf("Mac") > -1) os = "macOS";
+            else if (ua.indexOf("Linux") > -1) os = "Linux";
+            else if (ua.indexOf("Android") > -1) os = "Android";
+            else if (ua.indexOf("iOS") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1) os = "iOS";
+            
+            return os;
+        }
+        
+        // Ottieni l'indirizzo IP (tramite API esterna)
+        function getIPAddress() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').textContent = data.ip;
+                })
+                .catch(() => {
+                    document.getElementById('ip-address').textContent = 'Non disponibile';
+                });
+        }
+        
+        // Test connessione
+        function testConnection() {
+            alert('✅ Connessione attiva! La pagina risponde correttamente.');
+        }
+        
+        // Mostra info server
+        function showServerInfo() {
+            const serverInfo = `
+                📊 INFORMAZIONI SERVER:
+                
+                URL: ${window.location.href}
+                Hostname: ${window.location.hostname}
+                Porta: ${window.location.port || '80/443'}
+                Protocollo: ${window.location.protocol}
+                Path: ${window.location.pathname}
+                
+                Questa pagina è stata caricata con successo!
+            `;
+            alert(serverInfo);
+        }
+        
+        // Ricarica pagina
+        function reloadPage() {
+            location.reload();
+        }
+        
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            
+            document.getElementById('browser-info').textContent = getBrowserInfo();
+            document.getElementById('os-info').textContent = getOSInfo();
+            document.getElementById('language-info').textContent = navigator.language || 'it-IT';
+            document.getElementById('resolution-info').textContent = `${window.screen.width}x${window.screen.height}`;
+            document.getElementById('protocol').textContent = window.location.protocol.toUpperCase();
+            
+            // Rileva software server (tentativo)
+            const serverSoftware = navigator.userAgent.includes('Apache') ? 'Apache' : 
+                                 navigator.userAgent.includes('nginx') ? 'nginx' : 
+                                 'Server web standard';
+            document.getElementById('server-software').textContent = serverSoftware;
+            
+            getIPAddress();
+        });
+    </script>
+</body>
+</html>
